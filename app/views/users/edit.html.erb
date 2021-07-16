@@ -14,7 +14,6 @@
  <div class="container text-center">
     <div class="form">
         <div class="card justify-content bg-warning">
-            <%= form_with(model: @user, local: true) do |f| %> 
             <div class="d-flex flex-column">
                 <%= f.label :name ,class:'text-light py-3 fs-3'%> 
                 <div class="p-3"><%= f.text_field :name  ,class:'p-3'%> </div>
@@ -34,12 +33,9 @@
                     <%= f.file_field :image ,class:'p-3'%>
                     <%= f.hidden_field :image_cache %>
                 </div>
-             </div>
-                
-
+             </div>      
            <div class="p-3"><%= f.submit "Valider",class:'btn btn-success btn-3d'%></div>
             </div>
-            <% end %>
         </div> 
     </div>
 </div>

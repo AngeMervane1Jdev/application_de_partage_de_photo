@@ -46,9 +46,10 @@ end
     @user = User.find(params[:id])
     @feed= Feed.find_by user_id: @user.id
   end
-    private
-    def user_params
-    params.fetch(:user,{}).permit %i[name email password password_confirmation image image_cache]
-    end
+
+  private
+  def user_params
+  params.require(:user).permit(:name,:email,:password,:password_confirmation,:image,:image_cache)
+  end
   
 end
