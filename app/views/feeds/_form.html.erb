@@ -1,0 +1,39 @@
+<%= form_with(model: feed, local: true,url: choose_new_or_edit ) do |form| %>
+  <% if feed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+      <% feed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="continer text-center">
+    <div class="card text-center shadow d-flex">
+      <div class="card-body w-100">
+        <div class="field">
+          <div class="form">
+            <%= form.label :'Ajouter une image' ,class:'p-3 fs-3'%>
+            <div class="form-group">
+              <%= form.file_field :image,class:'btn btn-secondary' %>
+               <%= form.hidden_field :image_cache %>
+            </div>
+            <%= form.label :'Ajouter un commentaire' ,class:'p-3 fs-3'%>
+            <div class="form-group">
+             
+              <%= form.text_area :content,class:'p-3 fs-2 text-dark',autofocus:true %>
+              <%= hidden_field_tag :user_id, value: @current_user.id %>
+            </div>
+          </div>
+          
+        </div>
+        <div class="actions p-3">
+          <%= form.submit%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

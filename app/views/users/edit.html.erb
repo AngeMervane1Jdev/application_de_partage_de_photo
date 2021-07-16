@@ -1,0 +1,46 @@
+<h1 class="p-2">Update Profil</h1> 
+ <% if @user.errors.any? %> 
+ <div id="error_explanation"> 
+ <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2> 
+ <ul> 
+ <% @user.errors.full_messages.each do |message| %> 
+ <li><%= message %></li> 
+ <% end %> 
+ </ul> 
+ </div> 
+ <% end %> 
+ <%= form_with(model: @user, local: true,url: user_path) do |f| %> 
+ 
+ <div class="container text-center">
+    <div class="form">
+        <div class="card justify-content bg-warning">
+            <%= form_with(model: @user, local: true) do |f| %> 
+            <div class="d-flex flex-column">
+                <%= f.label :name ,class:'text-light py-3 fs-3'%> 
+                <div class="p-3"><%= f.text_field :name  ,class:'p-3'%> </div>
+
+                <%= f.label :email ,class:'text-light py-3 fs-3'%> 
+                <div class="p-3"><%= f.email_field :email  ,class:'p-3'%> </div>
+
+                <%= f.label :password,class:'text-light py-3 fs-3' %> 
+                <div class="p-3"><%= f.password_field :password ,class:'p-3'%> </div>
+
+                <%= f.label :password_confirmation,class:'text-light py-3 fs-3' %> 
+                <div class="p-3"><%= f.password_field :password_confirmation ,class:'p-3'%> </div>
+
+             <div class="from-group">
+                <%= f.label :image,class:'text-light py-3 fs-3' %> 
+                <div class="p-3">
+                    <%= f.file_field :image ,class:'p-3'%>
+                    <%= f.hidden_field :image_cache %>
+                </div>
+             </div>
+                
+
+           <div class="p-3"><%= f.submit "Valider",class:'btn btn-success btn-3d'%></div>
+            </div>
+            <% end %>
+        </div> 
+    </div>
+</div>
+<% end %>

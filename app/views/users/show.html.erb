@@ -1,0 +1,32 @@
+<h1 class="p-3">Bienvenue <%= @user.name %> Sur Iclone</h1>
+
+<div class="container text-center">
+  <%= link_to "Ajouter un post", new_feed_path,class:"btn btn-secondary text-center" %>
+<%= link_to "Voir les posts", feeds_path,class:"btn btn-secondary text-center" %>
+</div>
+
+//
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="card card0 border-0">
+      <div class="row d-flex">
+          <div class="col-lg-6">
+              <div class="card1 pb-5">
+                  <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> 
+                    
+              </div>
+          </div>
+          <div class="col-lg-6">
+              <div class="card2 card border-0 px-4 py-5">
+                  <div class="row px-3"> <label class="mb-1">
+                          <h6 class="mb-0 text-sm">Nom</h6>
+                      </label> <p class="mb-4"><%= @user.name%></p> </div>
+                  <div class="row px-3"> <label class="mb-1">
+                          <h6 class="mb-0 text-sm">Email</h6>
+                      </label>  <p class="mb-4"><%= @user.email%></p> 
+                 </div>
+                </div>
+          </div>
+             <%= link_to "Editer le profile", edit_user_path(@user.id) ,class:'btn btn-danger'%>
+      </div>
+  </div>
+</div>

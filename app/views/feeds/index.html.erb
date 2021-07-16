@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+<div class="caontainer row my-auto mx-auto">
+  <% @feeds.each do |feed| %>
+  <% if feed.user_id==current_user.id %>
+  <div class="card">
+    <div class="card-head md-3">
+      <div class="card m-3"   style="width: 25rem;">
+        <% if feed.image.url %>
+
+        <%= image_tag feed.image.url,class:'card-img-top'%>
+        <% else %>
+        <%= image_tag("default.png",:alt => "--",class:'card-img-top' )%>
+        <% end %>
+        
+       </div>
+       <div class="card-title">
+          <h3 class='text-center text-info'><%= feed.content %></h3>
+       </div>
+       <div class="card-footer">
+        <%= link_to 'Show', feed, class:'btn btn-success p-3 text-center'%>
+        <%= link_to 'Edit', edit_feed_path(feed), class:'btn btn-warning' %>
+        <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%>
+        <h3> Poster par vous</h3>
+       </div>
+    </div>
+  </div>  
+  <% end %>     
+<% end %>
+<% @feeds.each do |feed| %>
+  <% if feed.user_id!=current_user.id %>
+  <div class="card">
+    <div class="card-head md-3">
+      <div class="card m-3"   style="width: 25rem;">
+        <%= image_tag feed.image.url class:'card-img-top',size:"100" %>
+       </div>
+       <div class="card-title">
+          <h3 class='text-center text-info'><%= feed.content %></h3>
+       </div>
+       <div class="card-footer">
+        <%= link_to 'Show', feed, class:'btn btn-success text-center'%>
+        <%= link_to 'Edit', edit_feed_path(feed), class:'btn btn-warning' %>
+        <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%>
+        <h3>Poster par <%= user=@user.find_by(id: feed.user_id).name %></h3>
+       </div>
+    </div>
+  </div>  
+  <% end %>     
+<% end %>
+</div>
+   
+
+<br>
+
+<%= link_to 'New Feed', new_feed_path %>
