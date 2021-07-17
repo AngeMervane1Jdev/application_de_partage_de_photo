@@ -4,7 +4,7 @@
     <div class="column">
       <div class="row">
         <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-        <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url ,class:'img-fluid w-70 img-thumbnail'%>
+        <%= image_tag(@feed.image.url,class:'img-fluid w-70 img-thumbnail') if @feed.image && @feed.image.url %>
         <p><%= @feed.content %></p>
         <%= form.hidden_field :content %>
         <%= form.hidden_field :image_cache %>
