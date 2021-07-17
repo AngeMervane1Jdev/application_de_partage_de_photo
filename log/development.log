@@ -12973,3 +12973,234 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.4ms)
 
 
+Started POST "/sessions" for ::1 at 2021-07-17 08:31:52 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MffvpayDLnGBr8pjHYYBhT78V9AmyLDx21ri6JW3pbMiIehNsuQnMjpApo8Cv1cEiMys9T8j6N0QhF4gF7MESg==", "session"=>{"email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (24.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 357ms (Views: 316.9ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/sessions" for ::1 at 2021-07-17 08:31:59 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M+NJEDwc47D8w5v3I8gw661HCJSCPpccSfvJjuLWKFUgNU74Invq80cs9xs88WZqG3fzsZvVzzCCJXVGYNKJrA==", "session"=>{"email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 72ms (Views: 69.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for ::1 at 2021-07-17 08:32:01 +0000
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (10.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 65ms (Views: 47.5ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/users" for ::1 at 2021-07-17 08:32:18 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9JdNWkG9v3AoD57C4XJ9+FP6rYte0L1aG+Nt7CrslLlFYqfTeSRrA+KGT2WfjA0vnfuNVYuiYkj+r2pF6nnE5w==", "user"=>{"name"=>"Noutch", "email"=>"angenoutche@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:25
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutche@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:25
+  [1m[36mUser Create (119.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Noutch"], ["email", "angenoutche@gmail.com"], ["password_digest", "$2a$12$dWtibbCHqmOwUEQSZbxAzeaRyNP/y7caeZ109Jwk8Pgar/6CsBbC6"], ["created_at", "2021-07-17 08:32:18.315053"], ["updated_at", "2021-07-17 08:32:18.315053"]]
+  ↳ app/controllers/users_controller.rb:25
+  [1m[35m (62.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:25
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 475ms (ActiveRecord: 183.3ms)
+
+
+Started GET "/users/6" for ::1 at 2021-07-17 08:32:18 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Redirected to http://localhost:3000/sessions/new
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-07-17 08:32:18 +0000
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 31ms (Views: 29.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for ::1 at 2021-07-17 08:32:27 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jg0btNrTJhAsJdq1HEPauYwnTHaODPkrSxSix/dtcaQ12xxcxLQvU5fKtlkDeow4Ohe3U5fnoQeAyh4PdWnQXQ==", "session"=>{"email"=>"angenoutche@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutche@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 296ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/6" for ::1 at 2021-07-17 08:32:27 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46
+  [1m[36mFeed Load (21.1ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (17.2ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 23.5ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    19:         <div class="row">
+    20:           <div class="col-md-6 img">
+    21:               <% if  @user.image %>
+    22:               <%= image_tag @user.image.url,class:'img text-center w-75 rounded-circle '%>
+    23:              
+    24:               <% else %>
+    25:               <%= image_tag 'defautl.png',class:'img text-center w-75 rounded-circle ' %>
+  
+app/views/users/show.html.erb:22:in `_app_views_users_show_html_erb___823278113046185243_17840'
+Started GET "/users/6" for ::1 at 2021-07-17 08:34:21 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46
+  [1m[36mFeed Load (1.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (The asset "defautl.png" is not present in the asset pipeline.
+):
+    22:               <%= image_tag @user.image.url,class:'img text-center w-75 rounded-circle '%>
+    23:              
+    24:               <% else %>
+    25:               <%= image_tag 'defautl.png',class:'img text-center w-75 rounded-circle ' %>
+    26:               <% end %>
+    27:           
+    28:           </div>
+  
+app/views/users/show.html.erb:25:in `_app_views_users_show_html_erb___823278113046185243_18360'
+Started GET "/users/6" for ::1 at 2021-07-17 08:36:41 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 51ms (Views: 46.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/6" for ::1 at 2021-07-17 08:37:06 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46
+  [1m[36mFeed Load (0.5ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 38ms (Views: 31.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/6" for ::1 at 2021-07-17 08:37:21 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:47
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 30.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/6/edit" for ::1 at 2021-07-17 08:37:29 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (38.9ms)
+Completed 200 OK in 84ms (Views: 71.6ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/users/6" for ::1 at 2021-07-17 08:37:32 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1aRH9XIhPxEwWIAXdJmH3oF/h0+6cm4Momzi9gFlJ5vwMq6IKXYplpM9K6KrnNKDMfJRL/uKL23g8TLb8Zp3hQ==", "user"=>{"name"=>"Noutch", "email"=>"angenoutche@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image_cache"=>""}, "commit"=>"Valider", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:38
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "angenoutche@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 64ms (Views: 54.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/6/edit" for ::1 at 2021-07-17 08:40:14 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 61ms (Views: 34.4ms | ActiveRecord: 5.0ms)
+
+
+Started PATCH "/users/6" for ::1 at 2021-07-17 08:40:18 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L2HTUvqJZu6JJ6mmpjcwL/1rvi7zC4hVBDiEaYMBMzg8t9S65O5vrTLIxUq5DmauS1tFC+rg0HnP5jihAQWSwQ==", "user"=>{"name"=>"Noutch", "email"=>"angenoutche@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image_cache"=>""}, "commit"=>"Valider", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:38
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "angenoutche@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 56ms (Views: 43.0ms | ActiveRecord: 1.7ms)
+
+

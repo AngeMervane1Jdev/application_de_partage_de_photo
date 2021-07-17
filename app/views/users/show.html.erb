@@ -18,11 +18,11 @@
     <div class="container">
         <div class="row">
           <div class="col-md-6 img">
-              <% if  @user.image %>
+              <% if @user.image && @user.image.url%>
               <%= image_tag @user.image.url,class:'img text-center w-75 rounded-circle '%>
              
               <% else %>
-              <%= image_tag 'defautl.png',class:'img text-center w-75 rounded-circle ' %>
+              <%= image_tag('default.png',:alt => "--",class:'img-fluid w-50 img-thumbnail')%>
               <% end %>
           
           </div>
