@@ -3,7 +3,7 @@ class CreateFeeds < ActiveRecord::Migration[5.2]
     create_table :feeds do |t|
       t.text :image
       t.text :content
-      t.integer :fovorite_of_user_id, array: true,default:[]
+      t.integer :favorite_of_user_id
       t.timestamps
     end
   end

@@ -8,13 +8,7 @@ class FeedsController < ApplicationController
   end
 
   def favorites_list
-    @feeds=Feed.where.not(fovorite_of_user_id: nil)
-    @favorites=[]
-    @feeds.each do |feed|
-      if(feed.fovorite_of_user_id.include?(current_user.id))
-      @favorites+=[feed]
-      end
-    end
+    @favorites=Feed.where(favorite_of_user_id: current_user.id)
   end
 
 
@@ -26,8 +20,7 @@ class FeedsController < ApplicationController
   #define a favorite
  def make_it_as_my_favorite
     @feed=Feed.find params[:id]
-    @favorites=@feed.fovorite_of_user_id+[current_user.id]
-    @feed.update(fovorite_of_user_id:@favorites)
+    @feed.update(favorite_of_user_id: curirent_user.id)
     redirect_to feeds_path
  end
 
