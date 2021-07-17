@@ -24153,3 +24153,198 @@ DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlis
   ↳ db/seeds.rb:11
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started GET "/" for ::1 at 2021-07-17 17:23:05 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (28.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 601ms (Views: 485.7ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/users" for ::1 at 2021-07-17 17:23:26 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ERNO1onZPGx+kakS1slTAUt7wHZbXeaw3u4Jv1xWGGwCxUk+l741L8V+xf7J8AWA/Us7U0K2vpwVMLV33lK5lQ==", "user"=>{"name"=>"Cyanno", "email"=>"anutchogbe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f564406d988 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-40902-a6ilfa.jpg>, @original_filename="profile2.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"profile2.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>""}, "commit"=>"Create my account"}
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from create at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/users_controller.rb:13)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "anutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Create (9.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "image", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Cyanno"], ["email", "anutchogbe@gmail.com"], ["image", "profile2.jpg"], ["password_digest", "$2a$12$BZMat/aTzyv/WuS5JscWXuOWt3lSJrpxVZsSNLeq.s9zJxqlqe/HO"], ["created_at", "2021-07-17 17:23:26.798007"], ["updated_at", "2021-07-17 17:23:26.798007"]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (19.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:15
+  Rendering mails_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered mails_mailer/welcome_email.html.erb within layouts/mailer (0.7ms)
+  Rendering mails_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered mails_mailer/welcome_email.text.erb within layouts/mailer (0.4ms)
+MailsMailer#welcome_email: processed outbound mail in 35.6ms
+Sent mail to anutchogbe@gmail.com (18.1ms)
+Date: Sat, 17 Jul 2021 17:23:26 +0000
+From: angenoutchogbe@gmail.com
+To: anutchogbe@gmail.com
+Message-ID: <60f3120ef2b27_9fc64e4836885@ange-HP-ProBook-650-G1.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_60f3120eee3a1_9fc64e48367cd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_60f3120eee3a1_9fc64e48367cd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com, Cyanno
+===============================================
+
+You have successfully signed up to example.com,
+your username is: anutchogbe@gmail.com.
+
+To login to the site, just follow this link: .
+
+Thanks for joining and have a great day!
+
+
+----==_mimepart_60f3120eee3a1_9fc64e48367cd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to example.com, Cyanno</h1>
+    <p>
+      You have successfully signed up to example.com,
+      your username is: anutchogbe@gmail.com.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: .
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+
+  </body>
+</html>
+
+----==_mimepart_60f3120eee3a1_9fc64e48367cd--
+
+Redirected to http://localhost:3000/users/51
+Completed 302 Found in 481ms (ActiveRecord: 30.0ms)
+
+
+Started GET "/users/51" for ::1 at 2021-07-17 17:23:27 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"51"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[36mFeed Load (0.6ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 51], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 62ms (Views: 37.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 17:25:03 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (4.7ms)
+  Rendered feeds/new.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 55ms (Views: 37.1ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 17:25:10 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FV1T/HQ8zYZ220Oim5dLkvCviCx7VviAERrGOIybMgGPC2EjHwoCnGFo86eqWnsj7mcqJZm5baqNfksJfhwEvw==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f5648ed9c20 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-40902-8y57ld.jpg>, @original_filename="profil.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"profil.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"jkjkl"}, "user_id"=>"{:value=>2}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:75)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 44ms (Views: 36.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 17:25:13 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2X1X1Q7ubHuWdMhO9JzpySdXbadbbqchxAgqcvM9ln7Kq1A9EIllOC2bpKLrpb9IkWeWgkKF/w0P1pa6cTk3hw==", "feed"=>{"content"=>"jkjkl", "image_cache"=>"1626542710-554016722538468-0002-4554/profil.jpg", "image"=>"/uploads/tmp/1626542710-554016722538468-0002-4554/profil.jpg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[36mFeed Create (100.6ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "profil.jpg"], ["content", "jkjkl"], ["created_at", "2021-07-17 17:25:13.088904"], ["updated_at", "2021-07-17 17:25:13.088904"], ["user_id", 2]]
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[35m (327.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  Rendering post_mail_mailer/post_confirmation.html.erb within layouts/mailer
+  Rendered post_mail_mailer/post_confirmation.html.erb within layouts/mailer (0.5ms)
+PostMailMailer#post_confirmation: processed outbound mail in 7.4ms
+Sent mail to clone2@gmail.com (4.2ms)
+Date: Sat, 17 Jul 2021 17:25:13 +0000
+From: angenoutchogbe@gmail.com
+To: clone2 <clone2@gmail.com>
+Message-ID: <60f31279829ac_9fc638403694f@ange-HP-ProBook-650-G1.mail>
+Subject: Post Confirmation
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <div class="warning">/**Poste Notification**/</div>
+<p>========================</p><br>
+<h1> Hi clone2</h1>
+<h4>you have create a post </h4><br>
+<p>========================</p>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/feeds/1
+Completed 302 Found in 460ms (ActiveRecord: 428.5ms)
+
+
+Started GET "/feeds/1" for ::1 at 2021-07-17 17:25:13 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:81
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.6ms)
+
+
