@@ -1,0 +1,688 @@
+Started GET "/" for ::1 at 2021-07-17 19:45:18 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (30.4ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 775ms (Views: 731.1ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 19:45:28 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (7.4ms)
+  Rendered feeds/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 79ms (Views: 51.4ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 19:45:36 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qndCK6r0uT5GlTlylbS4rvHPkRhSJqyZROn3SeNain4wIXD0wcJ2JFEmiXekeYgf7wczEbDJObPYjXp4Ed28wA==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f93e80b3b90 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-53548-wo1v3n.jpg>, @original_filename="profil.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"profil.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"jklmlkj"}, "user_id"=>"{:value=>3}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:75)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 32ms (Views: 24.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 19:45:38 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvjZKiNjDr/wO2zLlkVOKIgD6PTtBAhXFR+pukOaftEFLt7CPQQH/EvUACeJfBipPjMT0fTvUHvewRVywZ7fKA==", "feed"=>{"content"=>"jklmlkj", "image_cache"=>"1626551136-6913535072742-0001-3941/profil.jpg", "image"=>"/uploads/tmp/1626551136-6913535072742-0001-3941/profil.jpg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[36mFeed Create (1.0ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "profil.jpg"], ["content", "jklmlkj"], ["created_at", "2021-07-17 19:45:38.819746"], ["updated_at", "2021-07-17 19:45:38.819746"], ["user_id", 3]]
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[35m (17.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  Rendering post_mail_mailer/post_confirmation.html.erb within layouts/mailer
+  Rendered post_mail_mailer/post_confirmation.html.erb within layouts/mailer (0.6ms)
+PostMailMailer#post_confirmation: processed outbound mail in 33.6ms
+Sent mail to angegbe@gmail.com (4.5ms)
+Date: Sat, 17 Jul 2021 19:45:38 +0000
+From: angenoutchogbe@gmail.com
+To: hjjjjjjjjjj <angegbe@gmail.com>
+Message-ID: <60f33362ebed8_d12c4f74942c7@ange-HP-ProBook-650-G1.mail>
+Subject: Post Confirmation
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <div class="warning">/**Poste Notification**/</div>
+<p>========================</p><br>
+<h1> Hi hjjjjjjjjjj</h1>
+<h4>you have create a post </h4><br>
+<p>========================</p>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/feeds/5
+Completed 302 Found in 159ms (ActiveRecord: 18.7ms)
+
+
+Started GET "/feeds/5" for ::1 at 2021-07-17 19:45:38 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (1.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:81
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 46ms (Views: 36.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 19:45:41 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/uploads/feed/image/1/pexels-cottonbro-5483069.jpg" for ::1 at 2021-07-17 19:45:41 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/1/pexels-cottonbro-5483069.jpg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/uploads/feed/image/3/profil.jpg" for ::1 at 2021-07-17 19:45:41 +0000
+Started GET "/uploads/feed/image/2/images.jpeg" for ::1 at 2021-07-17 19:45:41 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/3/profil.jpg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/2/images.jpeg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/user/favorites/4" for ::1 at 2021-07-17 19:45:57 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.7ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:22
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 1.6ms)
+
+
+  
+NameError (undefined local variable or method `curirent_user' for #<FeedsController:0x000055c70a1a5f00>
+Did you mean?  current_user
+               @current_user):
+  
+app/controllers/feeds_controller.rb:23:in `make_it_as_my_favorite'
+Started GET "/uploads/feed/image/2/images.jpeg" for ::1 at 2021-07-17 19:45:58 +0000
+Started GET "/uploads/feed/image/1/pexels-cottonbro-5483069.jpg" for ::1 at 2021-07-17 19:45:58 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/2/images.jpeg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/uploads/feed/image/3/profil.jpg" for ::1 at 2021-07-17 19:45:58 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/1/pexels-cottonbro-5483069.jpg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/feed/image/3/profil.jpg"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/user/favorites/4" for ::1 at 2021-07-17 19:46:21 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/feeds_controller.rb:23
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 14.3ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'favorite_of_user_id' for Feed.):
+  
+app/controllers/feeds_controller.rb:23:in `make_it_as_my_favorite'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1040.7ms)[0m  [1m[35mCREATE DATABASE "exo2_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1062.3ms)[0m  [1m[35mCREATE DATABASE "exo2_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (180.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (122.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210708152739)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (99.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "image" text, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210708152739_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210708152739"]]
+  ↳ bin/rails:9
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateFeeds (20210709024208)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (96.6ms)[0m  [1m[35mCREATE TABLE "feeds" ("id" bigserial primary key, "image" text, "content" text, "favorite_of_user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210709024208_create_feeds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210709024208"]]
+  ↳ bin/rails:9
+  [1m[35m (14.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddUserRefToFeed (20210709090202)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "feeds" ADD "user_id" bigint[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[35m (52.6ms)[0m  [1m[35mCREATE  INDEX  "index_feeds_on_user_id" ON "feeds"  ("user_id")[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "feeds" ADD CONSTRAINT "fk_rails_36f9216dc2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210709090202"]]
+  ↳ bin/rails:9
+  [1m[35m (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-07-17 19:47:59.514634"], ["updated_at", "2021-07-17 19:47:59.514634"]]
+  ↳ bin/rails:9
+  [1m[35m (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (16.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-07-17 19:48:14 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (53.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 391ms (Views: 309.8ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/users" for ::1 at 2021-07-17 19:48:38 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YeYpW12DuRZedObSdURhp86JIjqRqOgIpyXgJkxwN89yMC6zQ+SwVeWbij5qfTcmeLnZH4hDsCRs+1zuznSWNg==", "user"=>{"name"=>"Noutchogbe", "email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f88a9210820 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-54029-l6v4jq.jpg>, @original_filename="profile2.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"profile2.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>""}, "commit"=>"Create my account"}
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from create at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/users_controller.rb:13)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "image", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Noutchogbe"], ["email", "angenoutchogbe@gmail.com"], ["image", "profile2.jpg"], ["password_digest", "$2a$12$Bkm4HiplnzUXfuMXLp5A0eyy5Vaxf8sVptTBJfjz2GoPFmeKfMsT2"], ["created_at", "2021-07-17 19:48:38.372380"], ["updated_at", "2021-07-17 19:48:38.372380"]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:15
+  Rendering mails_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered mails_mailer/welcome_email.html.erb within layouts/mailer (0.5ms)
+  Rendering mails_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered mails_mailer/welcome_email.text.erb within layouts/mailer (0.4ms)
+MailsMailer#welcome_email: processed outbound mail in 33.9ms
+Sent mail to angenoutchogbe@gmail.com (5.2ms)
+Date: Sat, 17 Jul 2021 19:48:38 +0000
+From: angenoutchogbe@gmail.com
+To: angenoutchogbe@gmail.com
+Message-ID: <60f334167e737_d30d4e20997f2@ange-HP-ProBook-650-G1.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_60f334167d102_d30d4e209967a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_60f334167d102_d30d4e209967a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com, Noutchogbe
+===============================================
+
+You have successfully signed up to example.com,
+your username is: angenoutchogbe@gmail.com.
+
+To login to the site, just follow this link: .
+
+Thanks for joining and have a great day!
+
+
+----==_mimepart_60f334167d102_d30d4e209967a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to example.com, Noutchogbe</h1>
+    <p>
+      You have successfully signed up to example.com,
+      your username is: angenoutchogbe@gmail.com.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: .
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+
+  </body>
+</html>
+
+----==_mimepart_60f334167d102_d30d4e209967a--
+
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 439ms (ActiveRecord: 13.7ms)
+
+
+Started GET "/users/1" for ::1 at 2021-07-17 19:48:38 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Redirected to http://localhost:3000/sessions/new
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-07-17 19:48:38 +0000
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/sessions" for ::1 at 2021-07-17 19:48:44 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FD+vdKC/hXjYHFCyRUH6bpWbwSsCt/+xzjNdEQbZ9EEH6aicvtiMO2PzPF5aeKzvI6s6Dhtcp50F7eHZhN1VuA==", "session"=>{"email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 292ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2021-07-17 19:48:45 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[36mFeed Load (0.6ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 52ms (Views: 33.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 19:48:48 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (11.0ms)
+  Rendered feeds/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 61ms (Views: 46.3ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 19:48:56 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6YU1RDY8paOc3guTJ1jpnFJOUbxo6zTpAeyD2zLT9UBz0webXQpquYttu5YWldktTIbztYoEocOdiA7qwFTD/g==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f88a9aa1d18 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-54029-1gm9ral.jpg>, @original_filename="http_code_404_error.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"http_code_404_error.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"gfsdsdd"}, "user_id"=>"{:value=>1}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:75)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 45ms (Views: 37.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 19:48:58 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dvw5CSiI2v8HksLyOmxvWvHpYewFeyTX0H2nAtmC5Q9lKj7hNu/TvLx9rh4lVTnbR9mayRyQfPsboxvKW4ZE9g==", "feed"=>{"content"=>"gfsdsdd", "image_cache"=>"1626551336-295828129708349-0002-0393/http_code_404_error.jpg", "image"=>"/uploads/tmp/1626551336-295828129708349-0002-0393/http_code_404_error.jpg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[36mFeed Create (0.8ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "http_code_404_error.jpg"], ["content", "gfsdsdd"], ["created_at", "2021-07-17 19:48:58.296238"], ["updated_at", "2021-07-17 19:48:58.296238"], ["user_id", 1]]
+  ↳ app/controllers/feeds_controller.rb:42
+  [1m[35m (34.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:42
+  Rendering post_mail_mailer/post_confirmation.html.erb within layouts/mailer
+  Rendered post_mail_mailer/post_confirmation.html.erb within layouts/mailer (1.2ms)
+PostMailMailer#post_confirmation: processed outbound mail in 12.0ms
+Sent mail to angenoutchogbe@gmail.com (4.6ms)
+Date: Sat, 17 Jul 2021 19:48:58 +0000
+From: angenoutchogbe@gmail.com
+To: Noutchogbe <angenoutchogbe@gmail.com>
+Message-ID: <60f3342a567b6_d30d52f8998fe@ange-HP-ProBook-650-G1.mail>
+Subject: Post Confirmation
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <div class="warning">/**Poste Notification**/</div>
+<p>========================</p><br>
+<h1> Hi Noutchogbe</h1>
+<h4>you have create a post </h4><br>
+<p>========================</p>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/feeds/1
+Completed 302 Found in 70ms (ActiveRecord: 36.2ms)
+
+
+Started GET "/feeds/1" for ::1 at 2021-07-17 19:48:58 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.9ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:81
+  [1m[36mCACHE Feed Load (0.1ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 46ms (Views: 36.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 19:49:00 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  Rendered feeds/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 38ms (Views: 34.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user/favorites/1" for ::1 at 2021-07-17 19:49:04 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:23
+  [1m[36mFeed Update (0.4ms)[0m  [1m[33mUPDATE "feeds" SET "favorite_of_user_id" = $1, "updated_at" = $2 WHERE "feeds"."id" = $3[0m  [["favorite_of_user_id", 1], ["updated_at", "2021-07-17 19:49:04.322362"], ["id", 1]]
+  ↳ app/controllers/feeds_controller.rb:23
+  [1m[35m (15.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:23
+Redirected to http://localhost:3000/feeds
+Completed 302 Found in 27ms (ActiveRecord: 16.4ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 19:49:04 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (6.2ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  Rendered feeds/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 47ms (Views: 38.1ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 19:49:06 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "feeds" WHERE "feeds"."favorite_of_user_id" = $1[0m  [["favorite_of_user_id", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:2
+  [1m[36mFeed Load (0.7ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."favorite_of_user_id" = $1[0m  [["favorite_of_user_id", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:7
+  Rendered feeds/favorites_list.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 19:49:11 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.8ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  Rendered feeds/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 42ms (Views: 39.0ms | ActiveRecord: 1.1ms)
+
+

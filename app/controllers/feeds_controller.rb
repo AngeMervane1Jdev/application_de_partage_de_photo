@@ -20,7 +20,7 @@ class FeedsController < ApplicationController
   #define a favorite
  def make_it_as_my_favorite
     @feed=Feed.find params[:id]
-    @feed.update(favorite_of_user_id: curirent_user.id)
+    @feed.update(favorite_of_user_id: current_user.id)
     redirect_to feeds_path
  end
 
