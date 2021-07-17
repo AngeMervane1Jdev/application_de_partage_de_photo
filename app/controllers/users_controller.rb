@@ -8,21 +8,12 @@ def edit
   @user=User.find(current_user.id)
 end
 
-  def create
-   
-    @user = User.new(user_params)
-     if @user.save
-      MailsMailer.with(user: @user).welcome_email.deliver
-         redirect_to user_path(@user.id)
-     else
-       render :new
-    end
-  end
     # POST /feeds or /feeds.json
     def create
       @user= User.new(user_params)
       respond_to do |format|
         if @user.save
+          MailsMailer.with(user: @user).welcome_email.deliver
           format.html { redirect_to @user, notice: "You have successfully regiter." }
           format.json { render :show, status: :created, location: @user }
         else

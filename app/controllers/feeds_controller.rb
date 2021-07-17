@@ -7,10 +7,22 @@ class FeedsController < ApplicationController
     @user=User.all
   end
 
+  def favorites_list
+    @favorites=Feed.where(fovorite_of_user_id:current_user.id)
+  end
+
+
   # GET /feeds/1 or /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
   end
+
+  #define a favorite
+ def make_it_as_my_favorite
+    @feed=Feed.find params[:id]
+    @feed.update(fovorite_of_user_id:current_user.id)
+    redirect_to feeds_path
+ end
 
   # GET /feeds/new
   def new
@@ -28,7 +40,8 @@ class FeedsController < ApplicationController
     @feed.user_id=current_user.id
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: "Post was successfully created." }
+        PostMailMailer.with(user:current_user,feed:@feed).post_confirmation.deliver
+        format.html { redirect_to @feed, notice: "We have sent to you an email.Please confirm the post !!" }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new, status: :unprocessable_entity }

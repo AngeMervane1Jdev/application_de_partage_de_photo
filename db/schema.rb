@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_090202) do
   create_table "feeds", force: :cascade do |t|
     t.text "image"
     t.text "content"
+    t.integer "fovorite_of_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

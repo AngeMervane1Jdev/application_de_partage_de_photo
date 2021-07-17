@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
+<div class="container w-100">
 
-<p><P><%= @feed.inspect %></P>
-  <strong>Image:</strong>
-  <div style="width: 18rem;">
+<div class="text-center content d-block m-auto">
+  <div class='text-center'style="width: 18rem;">
     <% if @feed.image.url %>
 
-    <%= image_tag @feed.image.url,class:'img-fluid w-50 img-thumbnail'%>
+    <%= image_tag @feed.image.url,class:'img-fluid w-70 img-thumbnail'%>
     <% else %>
-    <%= image_tag('index.png',:alt => "--",class:'img-fluid w-50 img-thumbnail')%>
+    <%= image_tag('default.png',:alt => "--",class:'img-fluid w-50 img-thumbnail')%>
     <% end %>
-    
-  </div>
-  <p><%= @feed.content %></p> 
-</p>
-
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
+    <p><%= @feed.content %></p> 
 <%= link_to 'Back', feeds_path %>
+  </div>
+ 
+</div>
+
+</div>
+

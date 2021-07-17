@@ -1,0 +1,35 @@
+<div class="container">
+  <% if @favorites.count > 0 %>
+  <%=link_to 'Posts', feeds_path, class:'btn shadow'%>
+<h1>Vos favories</h1>
+
+<div class="row row-cols-1 row-cols-md-3">
+  <% @favorites.each do |favorie| %>
+  <div class="col m-3">
+<div class="card" style="width:400px">
+  <% if favorie.image.url %>
+  <%= image_tag favorie.image.url,class:'card-img-top'%>
+  <% else %>
+  <%= image_tag("default.png",:alt => "--",class:'card-img-top' )%>
+  <% end %>    
+  <div class="card-body">
+    <h4 class="card-title"><%=favorie.content%></h4>
+    <hr>
+    <%= link_to 'Show', favorie, class:'btn btn-success text-center'%>
+    <% if favorie.user_id==current_user.id %>
+    <%= link_to 'Edit', edit_feed_path(favorie.id), class:'btn btn-warning' %>
+    <%= link_to 'Destroy', favorie, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-danger'%>
+    <h3> Poster par vous</h3>
+    <% else %>
+    <h3> Poster par <%= User.find(favorie.user_id).name%></h3>
+    <% end %>  
+  </div>
+</div>    
+</div>
+<%end%>
+</div>
+<%else%>
+<h2>Vous n'avez pas encore de favories</h2>
+<%end%>
+<%= link_to 'Retour', feeds_path, class:'btn btn-primary'%>
+</div>
