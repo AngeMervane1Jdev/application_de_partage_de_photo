@@ -24348,3 +24348,726 @@ Processing by FeedsController#show as HTML
 Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.6ms)
 
 
+  [1m[35m (2034.7ms)[0m  [1m[35mCREATE DATABASE "exo2_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1012.1ms)[0m  [1m[35mCREATE DATABASE "exo2_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (169.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (114.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (15.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210708152739)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (91.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "image" text, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210708152739_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210708152739"]]
+  ↳ bin/rails:9
+  [1m[35m (21.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateFeeds (20210709024208)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (87.9ms)[0m  [1m[35mCREATE TABLE "feeds" ("id" bigserial primary key, "image" text, "content" text, "fovorite_of_user_id" integer[] DEFAULT '{}', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210709024208_create_feeds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210709024208"]]
+  ↳ bin/rails:9
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddUserRefToFeed (20210709090202)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "feeds" ADD "user_id" bigint[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[35m (37.3ms)[0m  [1m[35mCREATE  INDEX  "index_feeds_on_user_id" ON "feeds"  ("user_id")[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "feeds" ADD CONSTRAINT "fk_rails_36f9216dc2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20210709090202_add_user_ref_to_feed.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210709090202"]]
+  ↳ bin/rails:9
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-07-17 18:15:49.583391"], ["updated_at", "2021-07-17 18:15:49.583391"]]
+  ↳ bin/rails:9
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2158088089115507955)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-07-17 18:16:01 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (19.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 412ms (Views: 338.6ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/users" for ::1 at 2021-07-17 18:16:46 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J7BxgfXbM5TxjikkfOQ7P2N/2WLF8Ctf07P3r7q9L9I0ZnZp67w610phRchj3W2+1U8iR9wbc3MYbUtnOLmOKw==", "user"=>{"name"=>"Noutchogbe", "email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fea78844c10 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-45491-10qv8n3.jpg>, @original_filename="pexels-lukas-574073.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"pexels-lukas-574073.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>""}, "commit"=>"Create my account"}
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from create at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/users_controller.rb:13)
+  [1m[35m (13.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "image", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Noutchogbe"], ["email", "angenoutchogbe@gmail.com"], ["image", "pexels-lukas-574073.jpg"], ["password_digest", "$2a$12$8/.lHVNbbxiFwPGuIZAB2.nJcaHA5yXufpPlaKUzMl.Dyh9xfzjIi"], ["created_at", "2021-07-17 18:16:46.467624"], ["updated_at", "2021-07-17 18:16:46.467624"]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (22.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:15
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 352ms (ActiveRecord: 37.9ms)
+
+
+Started GET "/users/1" for ::1 at 2021-07-17 18:16:46 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Redirected to http://localhost:3000/sessions/new
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-07-17 18:16:46 +0000
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 38ms (Views: 36.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for ::1 at 2021-07-17 18:16:53 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZOwaHkXyf084Kh54fgPgEKHmzKTwB0cYV4Q2QcSkg7J3Oh32W5V2DIPFcpRhOraRF9Y3gensHzScWoqJRqAiSw==", "session"=>{"email"=>"angenoutchogbe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angenoutchogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 283ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2021-07-17 18:16:53 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[36mFeed Load (0.5ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 44ms (Views: 28.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 18:16:59 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (15.9ms)
+  Rendered feeds/new.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 89ms (Views: 56.1ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 18:17:12 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"weRivzJhk1OWY7Ao+CrUNucr0tO5EnJNiqavz8hfiNhbslBgWVdcSYHQAC3J5+SH+eNw2lv952cWwiL+Oti+Zg==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fea5cf77648 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-45491-fj972.jpg>, @original_filename="pexels-cottonbro-5483069.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"pexels-cottonbro-5483069.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"bsjhjs"}, "user_id"=>"{:value=>1}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:76)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 47ms (Views: 35.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 18:17:17 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UJXlhutfRC3WImg47aT0AnE4f1jqYwFAvi7cQ8TjfI1DQ+Ju9ThNbm3NBNTynaKDxwiEffOIWWx18GCLRufddA==", "feed"=>{"content"=>"bsjhjs", "image_cache"=>"1626545832-333296847448832-0002-3655/pexels-cottonbro-5483069.jpg", "image"=>"/uploads/tmp/1626545832-333296847448832-0002-3655/pexels-cottonbro-5483069.jpg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[36mFeed Create (1.8ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "pexels-cottonbro-5483069.jpg"], ["content", "bsjhjs"], ["created_at", "2021-07-17 18:17:17.084611"], ["updated_at", "2021-07-17 18:17:17.084611"], ["user_id", 1]]
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[35m (66.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:43
+Redirected to http://localhost:3000/feeds/1
+Completed 302 Found in 83ms (ActiveRecord: 69.1ms)
+
+
+Started GET "/feeds/1" for ::1 at 2021-07-17 18:17:17 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:82
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 45ms (Views: 37.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:17:19 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  Rendered feeds/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 52ms (Views: 36.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 18:17:26 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (3.7ms)
+  Rendered feeds/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 41ms (Views: 38.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 18:17:39 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"02HTqZtiIn/hlhISup884CFMcDYzvu5KJpjPtwcMJ/1JN+F28FTtZfYloheLUgxRP4TSP9FRe2C6/EKG9YsRQw==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fea78a2aef8 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-45491-e6q31c.jpeg>, @original_filename="images.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"images.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"sdhsdjhsd"}, "user_id"=>"{:value=>1}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:76)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 37ms (Views: 32.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 18:17:41 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LSq7Evf2fq8hUjXTLmK7vYSWvD1KQXn64F5/QWucWhg+/Lz66ZF37Jq9WT8xW+08MqZHGFOqIdYrgMOJ6Zj74Q==", "feed"=>{"content"=>"sdhsdjhsd", "image_cache"=>"1626545860-434579141755468-0003-2081/images.jpeg", "image"=>"/uploads/tmp/1626545860-434579141755468-0003-2081/images.jpeg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[36mFeed Create (6.2ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "images.jpeg"], ["content", "sdhsdjhsd"], ["created_at", "2021-07-17 18:17:41.703590"], ["updated_at", "2021-07-17 18:17:41.703590"], ["user_id", 1]]
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[35m (17.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:43
+Redirected to http://localhost:3000/feeds/2
+Completed 302 Found in 34ms (ActiveRecord: 24.1ms)
+
+
+Started GET "/feeds/2" for ::1 at 2021-07-17 18:17:41 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.5ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:82
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:17:44 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  Rendered feeds/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/sessions/1" for ::1 at 2021-07-17 18:17:45 +0000
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"znPq7rZPkMQrqQjx9jGgm2TH5eOYZGtUPEOhTpyQ0LXdpe0GqCiZh5BGZB3pCPYa0vcexoGPM3j3nR2GHpRxTA==", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-07-17 18:17:45 +0000
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for ::1 at 2021-07-17 18:17:49 +0000
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 47ms (Views: 43.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for ::1 at 2021-07-17 18:18:09 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b3ttZc/htYNsfCS52NjP+gp6EKqdiKh2OAUDGrscXMbejofs93hh8Kb19R6mJr8txHswdEj6d2TdSQSze4kMmA==", "user"=>{"name"=>"Cyanno", "email"=>"anenogbe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fea78c10c68 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-45491-tzod6f.jpg>, @original_filename="profile2.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"profile2.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>""}, "commit"=>"Create my account"}
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from create at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/users_controller.rb:13)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "anenogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "image", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Cyanno"], ["email", "anenogbe@gmail.com"], ["image", "profile2.jpg"], ["password_digest", "$2a$12$Myk0cVaPiOJVS9ooYluIRuhrxedRrHf9PLCZotrmP4VL0WAQoMI/W"], ["created_at", "2021-07-17 18:18:09.799622"], ["updated_at", "2021-07-17 18:18:09.799622"]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (16.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:15
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 313ms (ActiveRecord: 17.9ms)
+
+
+Started GET "/users/2" for ::1 at 2021-07-17 18:18:09 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Redirected to http://localhost:3000/sessions/new
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-07-17 18:18:09 +0000
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 200 OK in 30ms (Views: 28.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for ::1 at 2021-07-17 18:18:14 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+Evg+0c74QU3sucfBvJYSVO7m2qIXOgZTAJJFoFIT0TrnecTWVzoRoxdi/MZyw7I5YtgT5G3sDWH3PXeA0zuvQ==", "session"=>{"email"=>"anenogbe@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "anenogbe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 282ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2" for ::1 at 2021-07-17 18:18:14 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/feeds/new" for ::1 at 2021-07-17 18:18:22 +0000
+Processing by FeedsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/new.html.erb within layouts/application
+  Rendered feeds/_form.html.erb (3.8ms)
+  Rendered feeds/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 47ms (Views: 44.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/feeds/confirm" for ::1 at 2021-07-17 18:18:29 +0000
+Processing by FeedsController#confirm as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rct+ehnmq5q0CZvEEpqeEzI9xmDTa29Vfjh+5BFySVw3nUylctBkgKO6K8EjV66iLPVkaTGE+n/iXPPV4/V/4g==", "feed"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fea5d2ce760 @tempfile=#<Tempfile:/tmp/RackMultipart20210717-45491-1di5rg9.jpg>, @original_filename="profil.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"feed[image]\"; filename=\"profil.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "content"=>"bsdqlmkjh"}, "user_id"=>"{:value=>2}", "commit"=>"Create Feed"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+DEPRECATION WARNING: #extension_whitelist is deprecated, use #extension_allowlist instead. (called from confirm at /home/ange/Pictures/partage de photo/application_de_partage_de_photo/app/controllers/feeds_controller.rb:76)
+  Rendering feeds/confirm.html.erb within layouts/application
+  Rendered feeds/confirm.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 37ms (Views: 32.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/feeds" for ::1 at 2021-07-17 18:18:32 +0000
+Processing by FeedsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nz6SaqeyyU4LlRM+dKKlxmUxHu5OvhUjBGb5mTpDE5aM6JWCudXADbB6f9Jrm/NH0wHly1dVTQ/PuEVRuEeybw==", "feed"=>{"content"=>"bsdqlmkjh", "image_cache"=>"1626545909-759623895675988-0005-7137/profil.jpg", "image"=>"/uploads/tmp/1626545909-759623895675988-0005-7137/profil.jpg"}, "commit"=>"Poster"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[36mFeed Create (0.7ms)[0m  [1m[32mINSERT INTO "feeds" ("image", "content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "profil.jpg"], ["content", "bsdqlmkjh"], ["created_at", "2021-07-17 18:18:32.331086"], ["updated_at", "2021-07-17 18:18:32.331086"], ["user_id", 2]]
+  ↳ app/controllers/feeds_controller.rb:43
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:43
+Redirected to http://localhost:3000/feeds/3
+Completed 302 Found in 45ms (ActiveRecord: 12.9ms)
+
+
+Started GET "/feeds/3" for ::1 at 2021-07-17 18:18:32 +0000
+Processing by FeedsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (1.1ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:82
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:17
+  Rendering feeds/show.html.erb within layouts/application
+  Rendered feeds/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 46ms (Views: 39.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:18:34 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/user/favorites/2" for ::1 at 2021-07-17 18:18:43 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:24
+  [1m[36mFeed Update (0.6ms)[0m  [1m[33mUPDATE "feeds" SET "fovorite_of_user_id" = $1, "updated_at" = $2 WHERE "feeds"."id" = $3[0m  [["fovorite_of_user_id", "{2}"], ["updated_at", "2021-07-17 18:18:43.921578"], ["id", 2]]
+  ↳ app/controllers/feeds_controller.rb:24
+  [1m[35m (24.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:24
+Redirected to http://localhost:3000/feeds
+Completed 302 Found in 33ms (ActiveRecord: 25.6ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:18:43 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 52ms (Views: 47.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/user/favorites/3" for ::1 at 2021-07-17 18:18:55 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:24
+  [1m[36mFeed Update (1.4ms)[0m  [1m[33mUPDATE "feeds" SET "fovorite_of_user_id" = $1, "updated_at" = $2 WHERE "feeds"."id" = $3[0m  [["fovorite_of_user_id", "{2}"], ["updated_at", "2021-07-17 18:18:55.579935"], ["id", 3]]
+  ↳ app/controllers/feeds_controller.rb:24
+  [1m[35m (66.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:24
+Redirected to http://localhost:3000/feeds
+Completed 302 Found in 78ms (ActiveRecord: 69.0ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:18:55 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (1.0ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 45ms (Views: 39.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:19:02 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 500 Internal Server Error in 109ms (ActiveRecord: 0.3ms)
+
+
+  
+NameError (undefined local variable or method `fovorite_of_user_id' for #<FeedsController:0x00007fea6457a5c0>):
+  
+app/controllers/feeds_controller.rb:11:in `favorites_list'
+  [1m[36mFeed Load (0.5ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:23:43 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[35m (9.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(current_user.id))[0m
+  ↳ app/views/feeds/favorites_list.html.erb:2
+  Rendered feeds/favorites_list.html.erb within layouts/application (16.9ms)
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 15.4ms)
+
+
+  
+ActionView::Template::Error (PG::SyntaxError: ERROR:  syntax error at or near "."
+LINE 1: ...feeds" WHERE (fovorite_of_user_id.include?(current_user.id))
+                                                                  ^
+: SELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(current_user.id))):
+    1: <div class="container">
+    2:   <% if @favorites.count > 0 %>
+    3:   <%=link_to 'Posts', feeds_path, class:'btn shadow'%>
+    4: <h1>Vos favories</h1>
+    5: 
+  
+app/views/feeds/favorites_list.html.erb:2:in `_app_views_feeds_favorites_list_html_erb___2374195410140721057_19860'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:24:41 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(2))[0m
+  ↳ app/views/feeds/favorites_list.html.erb:2
+  Rendered feeds/favorites_list.html.erb within layouts/application (7.3ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 8.1ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "fovorite_of_user_id"
+LINE 1: SELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.incl...
+                                            ^
+: SELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(2))):
+    1: <div class="container">
+    2:   <% if @favorites.count > 0 %>
+    3:   <%=link_to 'Posts', feeds_path, class:'btn shadow'%>
+    4: <h1>Vos favories</h1>
+    5: 
+  
+app/views/feeds/favorites_list.html.erb:2:in `_app_views_feeds_favorites_list_html_erb___2374195410140721057_25220'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:25:51 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(2))[0m
+  ↳ app/views/feeds/favorites_list.html.erb:2
+  Rendered feeds/favorites_list.html.erb within layouts/application (9.9ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 10.1ms)
+
+
+  
+ActionView::Template::Error (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "fovorite_of_user_id"
+LINE 1: SELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.incl...
+                                            ^
+: SELECT COUNT(*) FROM "feeds" WHERE (fovorite_of_user_id.include?(2))):
+    1: <div class="container">
+    2:   <% if @favorites.count > 0 %>
+    3:   <%=link_to 'Posts', feeds_path, class:'btn shadow'%>
+    4: <h1>Vos favories</h1>
+    5: 
+  
+app/views/feeds/favorites_list.html.erb:2:in `_app_views_feeds_favorites_list_html_erb___2374195410140721057_30520'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:28:27 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 3.2ms)
+
+
+  
+NameError (undefined local variable or method `fovorite_of_user_id' for #<FeedsController:0x00007f8c486cb8b8>):
+  
+app/controllers/feeds_controller.rb:11:in `favorites_list'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:31:52 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (1.2ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 13.9ms)
+
+
+  
+TypeError (can't convert Feed to Array (Feed#to_ary gives NilClass)):
+  
+app/controllers/feeds_controller.rb:15:in `+'
+app/controllers/feeds_controller.rb:15:in `block in favorites_list'
+app/controllers/feeds_controller.rb:13:in `favorites_list'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:32:18 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 9.1ms)
+
+
+  
+NoMethodError (undefined method `to_a' for #<Feed:0x00007f8c484e7d30>
+Did you mean?  to_s):
+  
+app/controllers/feeds_controller.rb:15:in `block in favorites_list'
+app/controllers/feeds_controller.rb:13:in `favorites_list'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:35:43 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 11.9ms)
+
+
+  
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `clear' for #<Feed::ActiveRecord_Relation:0x00007f8c4835ab70>):
+  
+app/controllers/feeds_controller.rb:13:in `favorites_list'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:39:03 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.9ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+  [1m[36mFeed Load (0.3ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 10.8ms)
+
+
+  
+  [1m[36mCACHE Feed Load (0.0ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /var/lib/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `+' for #<ActiveRecord::QueryMethods::WhereChain:0x00007f8c487e1ce8>):
+  
+app/controllers/feeds_controller.rb:15:in `block in favorites_list'
+app/controllers/feeds_controller.rb:13:in `favorites_list'
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:40:05 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:24
+  Rendered feeds/favorites_list.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 329ms (Views: 279.6ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:40:17 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:40:21 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:24
+  Rendered feeds/favorites_list.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 40ms (Views: 34.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:40:25 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 47ms (Views: 42.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user/favorites/1" for ::1 at 2021-07-17 18:40:28 +0000
+Processing by FeedsController#make_it_as_my_favorite as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT  "feeds".* FROM "feeds" WHERE "feeds"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feeds_controller.rb:28
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/feeds_controller.rb:30
+  [1m[36mFeed Update (0.8ms)[0m  [1m[33mUPDATE "feeds" SET "fovorite_of_user_id" = $1, "updated_at" = $2 WHERE "feeds"."id" = $3[0m  [["fovorite_of_user_id", "{2}"], ["updated_at", "2021-07-17 18:40:28.064585"], ["id", 1]]
+  ↳ app/controllers/feeds_controller.rb:30
+  [1m[35m (27.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/feeds_controller.rb:30
+Redirected to http://localhost:3000/feeds
+Completed 302 Found in 43ms (ActiveRecord: 29.5ms)
+
+
+Started GET "/feeds" for ::1 at 2021-07-17 18:40:28 +0000
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  Rendering feeds/index.html.erb within layouts/application
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds"[0m
+  ↳ app/views/feeds/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/index.html.erb:27
+  Rendered feeds/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 46ms (Views: 41.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/post/favorites/list" for ::1 at 2021-07-17 18:40:29 +0000
+Processing by FeedsController#favorites_list as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:3
+  [1m[36mFeed Load (0.4ms)[0m  [1m[34mSELECT "feeds".* FROM "feeds" WHERE "feeds"."fovorite_of_user_id" IS NOT NULL[0m
+  ↳ app/controllers/feeds_controller.rb:13
+  Rendering feeds/favorites_list.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/feeds/favorites_list.html.erb:24
+  Rendered feeds/favorites_list.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 40ms (Views: 35.1ms | ActiveRecord: 1.8ms)
+
+
