@@ -13,7 +13,7 @@ end
       @user= User.new(user_params)
       respond_to do |format|
         if @user.save
-          MailsMailer.with(user: @user).welcome_email.deliver
+          #MailsMailer.with(user: @user).welcome_email.deliver
           format.html { redirect_to @user, notice: "You have successfully regiter." }
           format.json { render :show, status: :created, location: @user }
         else

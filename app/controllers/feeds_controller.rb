@@ -8,7 +8,7 @@ class FeedsController < ApplicationController
   end
 
   def favorites_list
-    @favorites=Feed.where(favorite_of_user_id: current_user.id)
+    @favorites=Feed.where(fovorite_of_user_id: current_user.id)
   end
 
 
@@ -20,7 +20,7 @@ class FeedsController < ApplicationController
   #define a favorite
  def make_it_as_my_favorite
     @feed=Feed.find params[:id]
-    @feed.update(favorite_of_user_id: current_user.id)
+    @feed.update(fovorite_of_user_id: current_user.id)
     redirect_to feeds_path
  end
 
@@ -40,7 +40,7 @@ class FeedsController < ApplicationController
     @feed.user_id=current_user.id
     respond_to do |format|
       if @feed.save
-        PostMailMailer.with(user:current_user,feed:@feed).post_confirmation.deliver
+        #PostMailMailer.with(user:current_user,feed:@feed).post_confirmation.deliver
         format.html { redirect_to @feed, notice: "We have sent to you an email.Please confirm the post !!" }
         format.json { render :show, status: :created, location: @feed }
       else
