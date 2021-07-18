@@ -40,7 +40,7 @@ class FeedsController < ApplicationController
     @feed.user_id=current_user.id
     respond_to do |format|
       if @feed.save
-        #PostMailMailer.with(user:current_user,feed:@feed).post_confirmation.deliver
+        PostMailMailer.with(user:current_user,feed:@feed).post_confirmation.deliver
         format.html { redirect_to @feed, notice: "We have sent to you an email.Please confirm the post !!" }
         format.json { render :show, status: :created, location: @feed }
       else
