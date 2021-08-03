@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: exo2_production
-  username: exo2
+  database: myapp-productions
+  username: app
   password: <%= ENV['BLOGAPP_DATABASE_PASSWORD'] %>
