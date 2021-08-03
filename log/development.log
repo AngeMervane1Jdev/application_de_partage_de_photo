@@ -2108,3 +2108,4 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+DEPRECATION WARNING: #fog_provider is deprecated and has no effect (called from block in <main> at /home/ange/Documents/DIVE/RUBY/somethinks/onRails/excercice/partage de photo/application_de_partage_de_photo/config/initializers/carrierwave.rb:6)
