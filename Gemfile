@@ -4,9 +4,9 @@ gem 'carrierwave'
 gem 'mimemagic', '0.3.7'
 #ruby '2.7.0'
 gem 'bcrypt'
-
+gem 'fog-aws'
 gem 'rails', '~> 5.2.5'
-
+gem 'dotenv-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
