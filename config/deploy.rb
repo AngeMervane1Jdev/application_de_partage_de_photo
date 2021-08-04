@@ -12,6 +12,9 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.6.5'
 set :rbenv_type, :system
 set :log_level, :info
+set :ssh_options, auth_methods: ['publickey'],
+                  keys: ['/home/ange/.ssh/id_rsa']
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
